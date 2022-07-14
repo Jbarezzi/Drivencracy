@@ -1,4 +1,5 @@
 import { Router } from "express";
+import validatePoll from "./../middlewares/validatePoll";
 
 const pollRouter = Router();
 
