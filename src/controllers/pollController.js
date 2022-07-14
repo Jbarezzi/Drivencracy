@@ -4,7 +4,7 @@ import { db } from "./../database/mongo.js";
 async function createPoll(req, res) {
     const poll = req.body;
     if(!poll.expiresAt) {
-        poll.expiresAt = dayjs().add(30, "day");
+        poll.expiresAt = dayjs().add(30, "day").format("YYYY-MM-DD HH-mm");
     }
     try {
         await db.collection("polls").insertOne(poll);
@@ -12,5 +12,6 @@ async function createPoll(req, res) {
     } catch(error) {
         res.sendStatus(500);
     }
-    
 }
+
+export { createPoll };
