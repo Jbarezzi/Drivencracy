@@ -5,4 +5,9 @@ const pollSchema = Joi.object({
     expiresAt: Joi.date().greater("now"),
 });
 
-export { pollSchema };
+const choiceSchema = Joi.object({
+    title: Joi.string().trim().required(),
+    poolId: Joi.string().trim().required()
+});
+
+export { pollSchema, choiceSchema };
