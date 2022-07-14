@@ -10,8 +10,17 @@ async function createPoll(req, res) {
         await db.collection("polls").insertOne(poll);
         res.sendStatus(201);
     } catch(error) {
-        res.sendStatus(500);
+        res.sendStatus(503);
     }
 }
 
-export { createPoll };
+async function getPolls(_req, res) {
+    try {
+        const polls = await db.collection("polls").find().toArray();
+        res.send(polls);
+    } catch {
+        res.send(503);
+    }
+}
+
+export { createPoll, getPolls };
