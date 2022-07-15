@@ -26,11 +26,28 @@ async function getPolls(_req, res) {
 async function getPollChoices(req, res) {
     const id = req.params.id;
     try {
-        const choices = await db.collection("choices").findOne({ poolId: id }).toArray();
+        const choices = await db.collection("choices").findOne({ poolId: new objectId(id) }).toArray();
         res.send(choices);
     } catch {
         res.sendStatus(503);
     }
 }
 
-export { createPoll, getPolls, getPollChoices };
+async function getPollResults(req, res) {
+    const id = req.params.id;
+    try {
+        const poll = await db.collection("polls").findOne({ _id: new objectId(id) });
+        const winnerChoice = await db.collection("choices").find({ poolId: new objectId(id) }).sort({ vote: -1 }).limit(1);
+        const result = {
+            ...poll,
+            result: {
+                ...winnerChoice,
+            }
+        }
+        res.send(result);
+    } catch {
+        res.sendStatus(503);
+    }
+}
+
+export { createPoll, getPolls, getPollChoices, getPollResults };

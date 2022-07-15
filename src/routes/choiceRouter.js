@@ -1,9 +1,9 @@
 import { Router } from "express";
 import { createChoice, createVote } from "./../controllers/choiceController.js";
-import checkIfPollIsValidFromBody from "./../middlewares/checkIfPollIsValidFromBody.js";
+import checkIfPollIsValidFromBody from "./../middlewares/choices/checkIfPollIsValidFromBody.js";
 import checkIfChoiceExists from "../middlewares/choices/checkIfChoiceExists.js";
 import checkIfPollIsOpen from "../middlewares/choices/checkIfPollIsOpen.js";
-import validateChoice from "./../middlewares/validateChoice.js";
+import validateChoice from "../middlewares/choices/validateChoice.js";
 
 const choiceRouter = Router();
 
