@@ -3,7 +3,7 @@ import { db, objectId } from "../../database/mongo.js";
 async function checkIfChoiceExists(req, res, next) {
     const id = req.params.id;
     try {
-        const choice = await db.collection("choices").findOne({ _id: objectId(id) });
+        const choice = await db.collection("choices").findOne({ _id: new objectId(id) });
         if(!!choice) {
             next();
             return;

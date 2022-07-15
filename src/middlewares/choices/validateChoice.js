@@ -8,6 +8,7 @@ async function validateChoice(req, res, next) {
         const titleExist = await db.collection("choices").findOne({ poolId: new objectId(poolId), title: title });
         if(!!titleExist) {
             res.sendStatus(409);
+            return;
         }
         next();
     } catch(error) {

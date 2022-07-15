@@ -3,6 +3,7 @@ import { db, objectId } from "./../database/mongo.js";
 
 async function createChoice(req, res) {
     const choice = req.body;
+    choice.poolId = new objectId(choice.poolId);
     try {
         await db.collection("choices").insertOne(choice);
         res.sendStatus(201);
