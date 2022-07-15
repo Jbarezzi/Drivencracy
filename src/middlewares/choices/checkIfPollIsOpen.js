@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { db, objectId } from "../../database/mongo";
+import { db, objectId } from "./../../database/mongo.js";
 
 async function checkIfPollIsOpen(req, res, next) {
     const id = req.params.id;

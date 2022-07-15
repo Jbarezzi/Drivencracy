@@ -1,4 +1,4 @@
-import { pollSchema } from "./schemas/index.js";
+import { pollSchema } from "./../schemas/index.js";
 
 async function validatePoll(req, res, next) {
     const poll = req.body;

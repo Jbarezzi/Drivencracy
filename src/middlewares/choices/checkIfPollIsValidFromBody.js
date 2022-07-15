@@ -1,4 +1,4 @@
-import { db, objectId } from "../database/mongo.js"
+import { db, objectId } from "./../../database/mongo.js"
 
 async function checkIfPollIsValidFromBody(req, res, next) {
     const { poolId }= req.body;

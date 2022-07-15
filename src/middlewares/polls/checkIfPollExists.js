@@ -1,4 +1,4 @@
-import { db, objectId } from "./../database/mongo.js";
+import { db, objectId } from "./../../database/mongo.js";
 
 async function checkIfPollExists(req, res, next) {
     const id = req.params.id;
